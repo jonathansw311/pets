@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Pets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    <h1>Available Pets!</h1>
+    <table class="table table-striped mt-5">
+        <thead>
+        <th>Name</th>
+        <th>Photo_url</th>
+        <th>Available</th>
+        </thead>
+        <tbody>
+            {% for pet in pets%}
+            <tr>
+            <td>{{pet.name}} <a href="/{{pet.id}}"><button type="button" class="btn btn-primary btn-sm" method="POST">Display/Edit</button></a></td>
+            <td>{{pet.photo_url}}</td>
+            <td>{% if pet.available == True %}<b>Yes!</b>
+                {% else %}No
+                {% endif %}</td>
+
+            </tr>
+
+            {% endfor %}
+            
+        </tbody>
+        </table>
+        <a href="/add" class="btn btn-info">Add a Pet</a>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+            <h4>Adopted Pets!</h4>
+            <table class="table table-striped mt-5">
+                <thead>
+                <th>Name</th>
+                <th>Photo_url</th>
+                <th>Available</th>
+                </thead>
+                <tbody>
+                    {% for pet in adoptedPets %}
+                    <tr>
+                    <td>{{pet.name}} <a href="/{{pet.id}}"><button type="button" class="btn btn-primary btn-sm" method="POST">Display/Edit</button></a></td>
+                    <td>{{pet.photo_url}}</td>
+                    <td>{% if pet.available == True %}<b>Yes!</b>
+                        {% else %}No
+                        {% endif %}</td>
+        
+                    </tr>
+        
+                    {% endfor %}
+                    
+                </tbody>
+                </table>
+                
+                </div>
+</body>
+</html>
